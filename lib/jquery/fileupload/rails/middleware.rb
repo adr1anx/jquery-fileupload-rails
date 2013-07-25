@@ -29,7 +29,11 @@ module JQuery
         end
 
         def iframe_transport?
-          @request.params['X-Requested-With'] == 'IFrame'
+          begin
+            @request.params['X-Requested-With'] == 'IFrame'
+          rescue
+            false
+          end
         end
 
         def html_document_left
